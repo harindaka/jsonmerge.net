@@ -10,10 +10,10 @@ Check [Releases](https://github.com/harindaka/jsonmerge.net/releases) for the la
 # Usage
 
 ## Windows
-jsonmerge (options)
+`jsonmerge (options)`
 
 ## MacOS or Linux
-./jsonmerge (options)
+`./jsonmerge (options)`
 
 ### Options 
 
