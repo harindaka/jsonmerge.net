@@ -1,11 +1,11 @@
 # jsonmerge.net
-Cross platform .net tool to merge json strings and/or files
+Cross platform .net tool for merging json strings and/or files. Merge those json configuration files in your CI pipeline now!
 
 # Prerequisites
 Requires the [.Net Runtime](https://www.microsoft.com/net/download) installed.
 
 # Download
-Check [Releases](https://github.com/harindaka/jsonmerge.net/releases) for the latest version
+Check [Releases](https://github.com/harindaka/jsonmerge.net/releases) for the latest version. Extract the zip archive once downloaded.
 
 # Usage
 
