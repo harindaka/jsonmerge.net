@@ -6,43 +6,43 @@ namespace jsonmerge.net
 {
     public class CommandLineOptions
     {
-        [Option('b', "base-json", Required = false, Default = "", HelpText = "(Mandatory) The base JSON to be overridden.")]
+        [Option('b', "base-json", Required = false, HelpText = "The base JSON to be overridden.")]
         public string BaseJson { get; set; }
 
-        [Option("base-json-file", Required = false, Default = null, HelpText = "(Mandatory) Path to the file where the base JSON to be overridden is stored.")]
+        [Option("base-json-file", Required = false, Default = null, HelpText = "Path to the file where the base JSON to be overridden is stored.")]
         public string BaseJsonFile { get; set; }
 
-        [Option('r', "override-json", Required = false, Default = "", HelpText = "(Mandatory) The JSON to be used as the override.")]
+        [Option('r', "override-json", Required = false, HelpText = "The JSON to be used as the override.")]
         public string OverrideJson { get; set; }
 
-        [Option("override-json-file", Required = false, Default = null, HelpText = "(Mandatory) Path to the file where the JSON to be used as the overridde is stored.")]
+        [Option("override-json-file", Required = false, Default = null, HelpText = "Path to the file where the JSON to be used as the override is stored.")]
         public string OverrideJsonFile { get; set; }
 
-        [Option("output-json-file", Required = false, Default = null, HelpText = "(Optional) Path to the output file. If file exists it will be overridden. If this option is not specified output will be written to standard output.")]
+        [Option("output-json-file", Required = false, Default = null, HelpText = "Path to the output file. If file exists it will be overwritten. If this option is not specified output will be written to standard output.")]
         public string OutputJsonFile { get; set; }
 
-        [Option("comments-ignore", Required = false, Default = false, HelpText = "(Optional) Ignore comments in JSON. Default: false")]
+        [Option("comments-ignore", Required = false, Default = true, HelpText = "Ignore comments when parsing.")]
         public bool CommentsIgnore { get; set; }
         
-        [Option("line-info-ignore", Required = false, Default = false, HelpText = "(Optional) Ignore line info in JSON. Default: false")]
+        [Option("line-info-ignore", Required = false, Default = true, HelpText = "Ignore line info  when parsing.")]
         public bool LineInfoIgnore { get; set; }
         
-        [Option("array-concat", SetName = "array-handling", Required = false, Default = false, HelpText = "(Optional) Concats arrays when merging JSON. Default: false")]
+        [Option("array-concat", Required = false, Default = false, HelpText = "Concat arrays when merging.")]
         public bool ArrayConcat { get; set; }
 
-        [Option("array-replace", SetName = "array-handling", Required = false, Default = true, HelpText = "(Optional) Replaces arrays when merging JSON. Default: true")]
+        [Option("array-replace", Required = false, Default = true, HelpText = "Replace arrays when merging.")]
         public bool ArrayReplace { get; set; }
         
-        [Option("array-union", SetName = "array-handling", Required = false, Default = false, HelpText = "(Optional) Unions arrays when merging JSON (remove duplicates). Default: false")]
+        [Option("array-union", Required = false, Default = false, HelpText = "Union arrays (remove duplicates) when merging.")]
         public bool ArrayUnion { get; set; }
         
-        [Option("array-merge", SetName = "array-handling", Required = false, Default = false, HelpText = "(Optional) Merge arrays when merging JSON. Default: false")]
+        [Option("array-merge", Required = false, Default = false, HelpText = "Merge arrays when merging.")]
         public bool ArrayMerge { get; set; }
         
-        [Option("null-ignore", Required = false, Default = false, HelpText = "(Optional) Ignore null fields when merging JSON. Default: false")]
+        [Option("null-ignore", Required = false, Default = false, HelpText = "Ignore null fields when merging.")]
         public bool NullIgnore { get; set; }
         
-        [Option("indent", Required = false, Default = false, HelpText = "(Optional) Format output as indented JSON. Default: false")]
+        [Option("indent", Required = false, Default = false, HelpText = "Output indented JSON.")]
         public bool Indent { get; set; }
         
     }

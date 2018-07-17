@@ -16,7 +16,7 @@ namespace jsonmerge.net
             {
                 p.CaseSensitive = true;
                 p.EnableDashDash = true;
-                p.HelpWriter = Console.Out;
+                p.HelpWriter = Console.Error;
                 p.ParsingCulture = CultureInfo.InvariantCulture;
             });
 
