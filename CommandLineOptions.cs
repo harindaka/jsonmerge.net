@@ -6,18 +6,12 @@ namespace jsonmerge.net
 {
     public class CommandLineOptions
     {
-        [Option('b', "base-json", Required = false, HelpText = "The base JSON to be overridden.")]
-        public string BaseJson { get; set; }
+        [Option('j', "json-strings", Required = false, HelpText = "The JSON strings to be merged. Multiple JSON strings can be specified seperated by a space. They are merged in the order specified. JSON strings always override any file based content.")]
+        public IEnumerable<string> JsonStrings { get; set; }
 
-        [Option("base-json-file", Required = false, Default = null, HelpText = "Path to the file where the base JSON to be overridden is stored.")]
-        public string BaseJsonFile { get; set; }
-
-        [Option('r', "override-json", Required = false, HelpText = "The JSON to be used as the override.")]
-        public string OverrideJson { get; set; }
-
-        [Option("override-json-file", Required = false, Default = null, HelpText = "Path to the file where the JSON to be used as the override is stored.")]
-        public string OverrideJsonFile { get; set; }
-
+        [Option('f', "json-files", Required = false, HelpText = "The files containing JSON to be merged. Multiple files can be specified seperated by a space. They are merged in the order specified. JSON strings always override any file based content.")]
+        public IEnumerable<string> JsonFiles { get; set; }
+                
         [Option("output-json-file", Required = false, Default = null, HelpText = "Path to the output file. If file exists it will be overwritten. If this option is not specified output will be written to standard output.")]
         public string OutputJsonFile { get; set; }
 

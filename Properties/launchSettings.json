@@ -2,7 +2,7 @@
   "profiles": {
     "jsonmerge.net": {
       "commandName": "Project",
-      "commandLineArgs": "--base-json-file C:\\projects\\source\\gitlab\\xamarin-starterkit\\starterkit\\Configuration\\Config.json --override-json-file C:\\projects\\source\\gitlab\\xamarin-starterkit\\starterkit\\Configuration\\Config.prod.json --indent"
+      "commandLineArgs": "-j \"{ \\\"key1\\\": \\\"value1\\\", \\\"key2\\\": \\\"value2\\\" }\" \"{ \\\"key2\\\": \\\"value22\\\" }\""
     }
   }
 }

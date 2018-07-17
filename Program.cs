@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using CommandLine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -28,27 +29,25 @@ namespace jsonmerge.net
 
         private static void ExecuteCommand(CommandLineOptions opts)
         {
-            string baseJson = null;
-            string overrideJson = null;
+            var jsonList = new List<string>();
 
-            if (String.IsNullOrWhiteSpace(opts.BaseJsonFile))
+            if (opts.JsonFiles != null)
             {
-                baseJson = opts.BaseJson;
-            }
-            else
-            {
-                baseJson = File.ReadAllText(opts.BaseJsonFile);
+                foreach (var file in opts.JsonFiles)
+                {
+                    var fileContent = File.ReadAllText(file);
+                    jsonList.Add(fileContent);
+                }
             }
 
-            if (String.IsNullOrWhiteSpace(opts.OverrideJsonFile))
+            if (opts.JsonStrings != null)
             {
-                overrideJson = opts.OverrideJson;
+                foreach (var jstring in opts.JsonStrings)
+                {
+                    jsonList.Add(jstring);
+                }
             }
-            else
-            {
-                overrideJson = File.ReadAllText(opts.OverrideJsonFile);
-            }
-                        
+                                    
             var loadSettings = new JsonLoadSettings();
             if(opts.CommentsIgnore)
             {
@@ -101,7 +100,7 @@ namespace jsonmerge.net
                 formatting = Formatting.Indented;
             }
 
-            var mergedJson = MergeJson(baseJson, overrideJson, loadSettings, mergeSettings, formatting);
+            string mergedJson = MergeJson(jsonList, loadSettings, mergeSettings, formatting);
 
             if(String.IsNullOrEmpty(opts.OutputJsonFile))
             {
@@ -123,33 +122,37 @@ namespace jsonmerge.net
         }
 
         private static string MergeJson(
-            string baseJson, 
-            string overrideJson, 
+            IEnumerable<string> jstrings,
             JsonLoadSettings loadSettings,
             JsonMergeSettings mergeSettings,
             Formatting formatting
             )
         {
-            if (String.IsNullOrWhiteSpace(baseJson) && String.IsNullOrWhiteSpace(overrideJson))
+            if(jstrings == null || !jstrings.Any())
             {
                 return String.Empty;
             }
 
-            if(String.IsNullOrWhiteSpace(baseJson))
+            bool hasJson = false;
+            var mergedObject = new JObject();
+            foreach (var jstring in jstrings)
             {
-                baseJson = "{}";
+                if(!String.IsNullOrWhiteSpace(jstring))
+                {
+                    var overrideObject = JObject.Parse(jstring, loadSettings);
+                    mergedObject.Merge(overrideObject, mergeSettings);
+                    hasJson = true;
+                }
             }
-            else if (String.IsNullOrWhiteSpace(overrideJson))
+
+            if (hasJson)
             {
-                overrideJson = "{}";
+                return mergedObject.ToString(formatting);
             }
-
-            var baseObject = JObject.Parse(baseJson, loadSettings);
-            var overrideObject = JObject.Parse(overrideJson, loadSettings);
-
-            baseObject.Merge(overrideObject, mergeSettings);
-
-            return baseObject.ToString(formatting);
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 }
