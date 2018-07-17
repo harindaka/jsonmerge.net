@@ -52,9 +52,5 @@ Check [Releases](https://github.com/harindaka/jsonmerge.net/releases) for the la
   --help                Display this help screen.
 
   --version             Display version information.
-<<<<<<< HEAD
-```
-=======
 
 ```
->>>>>>> cd5cfbe2e5c1df5761779a88ae7c79d40a6cb36f
