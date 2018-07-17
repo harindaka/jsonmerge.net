@@ -54,3 +54,14 @@ Check [Releases](https://github.com/harindaka/jsonmerge.net/releases) for the la
   --version             Display version information.
 
 ```
+
+## Examples
+
+### Merge files and output to a file with indented formatting
+`./jsonmerge -f "/path/to/file1.json" "/path/to/file2.json" "/path/to/file3.json" -o "/path/to/merged.json" --indented`
+
+### Merge strings and output to stdout
+`./jsonmerge -j "{ \"key1\": \"value1\" }" "{ \"key2\": \"value2\" }"`
+
+### Merge strings and files and output to stdout
+`./jsonmerge -j "{ \"key1\": \"value1\" }" "{ \"key2\": \"value2\" }" -f "/path/to/file1.json"`
