@@ -34,7 +34,7 @@ Check [Releases](https://github.com/harindaka/jsonmerge.net/releases) for the la
 
   --comments-ignore     (Default: true) Ignore comments when parsing.
 
-  --line-info-ignore    (Default: true) Ignore line info  when parsing.
+  --line-info-ignore    (Default: true) Ignore line info when parsing.
 
   --array-concat        (Default: false) Concat arrays when merging.
 
