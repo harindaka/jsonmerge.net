@@ -28,13 +28,13 @@ jsonmerge (options)
                         in the order specified. JSON strings always override 
                         any file based content.
 
-  --output-json-file    Path to the output file. If file exists it will be 
+  -o, --output-file     Path to the output file. If file exists it will be 
                         overwritten. If this option is not specified output 
                         will be written to standard output.
 
   --comments-ignore     (Default: true) Ignore comments when parsing.
 
-  --line-info-ignore    (Default: true) Ignore line info  when parsing.
+  --line-info-ignore    (Default: true) Ignore line info when parsing.
 
   --array-concat        (Default: false) Concat arrays when merging.
 
@@ -52,5 +52,4 @@ jsonmerge (options)
   --help                Display this help screen.
 
   --version             Display version information.
-
 ```

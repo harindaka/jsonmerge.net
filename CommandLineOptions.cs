@@ -12,13 +12,13 @@ namespace jsonmerge.net
         [Option('f', "json-files", Required = false, HelpText = "The files containing JSON to be merged. Multiple files can be specified seperated by a space. They are merged in the order specified. JSON strings always override any file based content.")]
         public IEnumerable<string> JsonFiles { get; set; }
                 
-        [Option("output-json-file", Required = false, Default = null, HelpText = "Path to the output file. If file exists it will be overwritten. If this option is not specified output will be written to standard output.")]
+        [Option('o', "output-file", Required = false, Default = null, HelpText = "Path to the output file. If file exists it will be overwritten. If this option is not specified output will be written to standard output.")]
         public string OutputJsonFile { get; set; }
 
         [Option("comments-ignore", Required = false, Default = true, HelpText = "Ignore comments when parsing.")]
         public bool CommentsIgnore { get; set; }
         
-        [Option("line-info-ignore", Required = false, Default = true, HelpText = "Ignore line info  when parsing.")]
+        [Option("line-info-ignore", Required = false, Default = true, HelpText = "Ignore line info when parsing.")]
         public bool LineInfoIgnore { get; set; }
         
         [Option("array-concat", Required = false, Default = false, HelpText = "Concat arrays when merging.")]
